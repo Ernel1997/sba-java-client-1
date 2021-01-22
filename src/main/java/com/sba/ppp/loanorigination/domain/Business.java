@@ -59,7 +59,9 @@ public class Business {
 	 private String primary_contact_email;
 
 	 private Boolean is_franchise;
-
+	 
+	 private String is_sba_listed_franchise;
+	 
 	 private String date_of_establishment;
 	 
 }

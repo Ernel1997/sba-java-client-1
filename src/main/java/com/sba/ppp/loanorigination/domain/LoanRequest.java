@@ -21,10 +21,18 @@ public class LoanRequest {
 	
 	private Business business;
 	
-	private Organization organization;
+	private String organization;
 	
 	private String status;
-
+	
+	private String refinance_of_eidl_amount;
+	
+	private String refinance_of_eidl_loan_number;
+	
+	private String period_1_quarter;
+	
+	private String period_2_quarter;
+	
 	private BigDecimal average_monthly_payroll;
 
 	private BigDecimal loan_amount;
@@ -84,4 +92,15 @@ public class LoanRequest {
 	private Integer number_of_employees_at_time_of_application;
 
 	private Integer anticipated_number_of_employees_retained;
+	private String submission_confirmation_id;
+	private Boolean applicant_is_eligible;
+	private Boolean loan_request_is_necessary;
+	private Boolean applicant_meets_revenue_test_and_size_standard;
+	private Boolean applicant_no_shuttered_venue_grant;
+	private Boolean lender_contracted_third_party;
+	private Boolean applicant_has_reduction_in_gross_receipts;
+	private Boolean applicant_wont_receive_another_second_draw;
+	private String lender_application_number;
+	private String sba_decision_date;
+	
 }

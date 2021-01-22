@@ -2,8 +2,6 @@ package com.sba.ppp.loanorigination.domain;
 
 import java.util.List;
 
-import com.sba.ppp.loanorigination.domain.SbaPPPLoanMessagesResponse.SbaPPPLoanMessagesResponseBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -6,9 +6,11 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sba.ppp.loanorigination.domain.ETranPPPLoanValidationResponse;
 import com.sba.ppp.loanorigination.domain.FranchiseOrNaicsCodesResponse;
+import com.sba.ppp.loanorigination.domain.GetEidlLoanValidationResponse;
+import com.sba.ppp.loanorigination.domain.GetValidatedAndStandardizedAddressResponse;
 import com.sba.ppp.loanorigination.domain.LoanRequest;
-import com.sba.ppp.loanorigination.domain.PPPLoanOrigination;
 import com.sba.ppp.loanorigination.domain.SbaPPPLoanOriginationStatusResponse;
 import com.sba.ppp.loanorigination.restclient.SbaRestApiClient;
 
@@ -48,14 +50,28 @@ public class SbaLoanOriginationService {
 		sbaRestApiClient.deleteSbaLoanOrigination(slug);
 	}
 
-	public FranchiseOrNaicsCodesResponse getNaicsCode(Integer page, String code) {
+	public FranchiseOrNaicsCodesResponse getNaicsCode(Integer page, String code,String description) {
 		// TODO Auto-generated method stub
-		return sbaRestApiClient.getFranchiseOrNaicsCode(page, code, "naics");
+		return sbaRestApiClient.getFranchiseOrNaicsCode(page, code, description, "naics");
 	}
 
-	public FranchiseOrNaicsCodesResponse getFranchiseCode(Integer page, String code) {
+	public FranchiseOrNaicsCodesResponse getFranchiseCode(Integer page, String code, String  description) {
 		// TODO Auto-generated method stub
-		return sbaRestApiClient.getFranchiseOrNaicsCode(page, code, "franchise");
+		return sbaRestApiClient.getFranchiseOrNaicsCode(page, code, description,  "franchise");
 	}
 
+	public GetValidatedAndStandardizedAddressResponse[] getValidateAndStandardizedAddressResponse(String address_1,String address_2,String city,String state,String zip_code) {
+		// TODO Auto-generated method stub
+		return sbaRestApiClient.getValidateAndStandardizedAddressResponse(address_1, address_2, city, state, zip_code);
+	}
+	
+	public GetEidlLoanValidationResponse getEidlLoanValidationResponse(Integer page, String eidl_loan_number) {
+		// TODO Auto-generated method stub
+		return sbaRestApiClient.getEidlLoanValidationResponse(page, eidl_loan_number);
+	}
+
+	public ETranPPPLoanValidationResponse getETranPPPLoanValidationResponse(Integer page, String sba_number) {
+		// TODO Auto-generated method stub
+		return sbaRestApiClient.getETranPPPLoanValidationResponse(page, sba_number);
+	}
 }

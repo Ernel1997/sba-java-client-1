@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class DateUtils {
-    
     /**
      * <p>Checks if two dates are on the same day ignoring time.</p>
      * @param date1  the first date, not altered, not null
@@ -17,6 +16,8 @@ public class DateUtils {
      * @return true if they represent the same day
      * @throws IllegalArgumentException if either date is <code>null</code>
      */
+	
+	
     public static boolean isSameDay(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
             throw new IllegalArgumentException("The dates must not be null");
