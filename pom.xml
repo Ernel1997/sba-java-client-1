@@ -9,10 +9,10 @@
 		<relativePath/> 
 	</parent>
 	<groupId>com.sba</groupId>
-	<artifactId>sba-ppp-loan-origination</artifactId>
+	<artifactId>sba-ppp-loan-forgiveness</artifactId>
 	<version>1.0</version>
-	<name>sba-ppp-loan-origination</name>
-	<description>SBA Java Client for PPP Loan Origination</description>
+	<name>sba-ppp-loan-forgiveness</name>
+	<description>SBA Java Client for PPP Loan Forgiveness</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -150,10 +150,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		 <dependency>
-        <groupId>com.fasterxml.jackson.dataformat</groupId>
-        <artifactId>jackson-dataformat-yaml</artifactId>
-    </dependency>
+		
 	</dependencies>
 
 	<build>
@@ -171,7 +168,6 @@
 				<directory>src/main/resources/${build.profile.id}</directory>
 			</resource>
 		</resources>
-			<pluginManagement>		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -193,7 +189,6 @@
             
             
 		</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

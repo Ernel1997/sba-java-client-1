@@ -4,10 +4,10 @@ server:
     context-path: /sandbox
   
 sba:
-  api-token: <<API-Token>>
-  vendor-key: <<Vendor-Key>>
-  loan-origination:
-    url: https://beta.forgiveness.sba.gov/api/origination/
+  api-token: {API_KEY}
+  vendor-key: {VENDOR_KEY}
+  loan-forgiveness:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_forgiveness_requests/
   loan-documents:
     url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_documents/
   loan-document-types:

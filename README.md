@@ -8,7 +8,7 @@ Java Client code is provided to make it easier to integrate to SBA APIs.
 
 Clone repository using SourceTree or Git Bash.
 
-`$git clone https://github.com/UsSbaPPP/sba-java-client.git`
+`$git clone https://github.com/UsSbaForgiveness/sba-java-client.git`
 
 ## Setting up API Token and Vendor Key
 
@@ -22,7 +22,7 @@ Update the below properties in  `/src/main/resources/sandbox/application.yml` wi
 
 ## Installation
 
-This is a maven project, so for building the project, browse to the parent directory /sba-java-client-master and run the below maven command for building the project
+This is a maven project, so for building the project, browse to the parent directlry /sba-java-client-master and run the below maven command for building the project
 ```
 mvn clean install
 ```
@@ -30,7 +30,7 @@ mvn clean install
 ## For running the project
 For running the project, just execute the java application jar
 ```
-java -jar sba-java-client-master/target/sba-ppp-loan-origination-1.0.jar
+java -jar sba-java-client-master/target/sba-ppp-loan-forgiveness-1.0.jar
 ```
 
 The project is a sample Spring Boot web application. This application runs on port `9091` and URL: `http://localhost:9091/sandbox`.
@@ -38,109 +38,93 @@ The complete set of URLs for different operation is part of the `application.yml
 
 
 **Usage #1:** Use Services provided in the code to eliminate the complexity of creating Rest Clients to integrate with SBA API's
-> src/main/java/com/sba/ppp/loanorigination/service
+> src/main/java/com/sba/ppp/loanforgiveness/service
 		
 **Usage #2:** Use domain objects to include in your code to make Rest API calls.
-> src/main/java/com/sba/ppp/loanorigination/domain
+> src/main/java/com/sba/ppp/loanforgiveness/domain
 	
 **Usage #3:** Use complete repository as a Spring boot Application for your integration.
 
-## Example steps for a Origination request
+## Example steps for a Forgiveness request
 	
-## Step1: Submit Loan Origination Request
+## Step1: Submit Loan Forgiveness Request
 
-This example is part of a sample [Use Case 1]
-(https://ussbappp.github.io/API-Dictionary.html#3-get-specific-ppp-loan-request-details)
+This example is part of a sample [Use Case 1](https://ussbaforgiveness.github.io/UseCases/usecase1-Submission-of-forgiveness-request.html)
 
-## POST API Call using SbaLoanOriginationService Service
+## POST API Call using SbaLoanForgivenessService Service and SbaPPPLoanForgiveness Request.
 	
-'SbaLoanOriginationService.execute(LoanRequest request)'
+`SbaLoanForgivenessService.execute(SbaPPPLoanForgiveness request)`
 		
-You need to populate LoanRequest object with all the information required for submission.
+You need to populate SbaPPPLoanForgiveness Request object with all the information provided in the 3508 and 3508EZ documents.
+Response is same as Request Object "SbaPPPLoanForgiveness" with id and slug are populated.
 
-Please refer to [Create Origination Request API](https://ussbappp.github.io/API-Dictionary.html#3-get-specific-ppp-loan-request-details)
+Please refer Document - API Field mapping diagrams
+- [3508](https://ussbaforgiveness.github.io/DocumentToAPIMappingImages/Form3508/Form-3508-Mapping-of-PDF-Form-to-API-Elements.html)
+- [3508EZ](https://ussbaforgiveness.github.io/DocumentToAPIMappingImages/Form3508EZ/Form-3508EZ-Mapping-of-PDF-Form-to-API-Elements.html)
 
-### Step 2: Get Details of ALL PPP Loan Requests ###
+Please refer to [Create Forgiveness Request API](https://ussbaforgiveness.github.io/API-Dictionary.html#2-create-forgiveness-request)
 
-This example is part of a sample [Use Case 4](https://ussbappp.github.io/API-Dictionary.html#2-get-details-of-all-ppp-loan-requests)
+### Step 2: Retrieve the document types required for uploading the documents ###
 
-### To get all PPP Loan details make a GET API Call to ###
+This example is part of a sample [Use Case 4](https://ussbaforgiveness.github.io/UseCases/usecase4-Get-document-types.html)
 
-`SbaLoanOriginationService.getLoanStatus(Integer page, String sbaNumber)`
+### To get Document Type make a GET API Call to ###
 
-reqParams -> Please refer to [Get Details of ALL PPP Loan Requests](https://ussbaforgiveness.github.io/API-Dictionary.html)
+`SbaLoanDocumentService.getDocumentTypes(Map<String, String> reqParams)`
+
+reqParams -> Please refer to [GET Document Types API](https://ussbaforgiveness.github.io/API-Dictionary.html)
 	  
-### Step 3: Get specific PPP Loan Request Details ###
+### Step 3: Upload Supporting Documentation for a Loan Forgiveness Request ###
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#3-get-specific-ppp-loan-request-details)
+This example is part of a sample [Use Case 1](https://ussbaforgiveness.github.io/UseCases/usecase1-Submission-of-forgiveness-request.html)
+
+To upload the documents, 
+  a. Need SbaPPPLoanForgiveness Details (Details can be from Step 1)
+  b. Need Document Type  (Details can be from Step 2)
   
-This is a POST API call to get PPP Loan Request by SLUG.
-`SbaLoanOriginationService.getLoanStatusBySlug(UUID slug)`
+This is a POST API call to upload documents.
+`SbaLoanDocumentService.submitLoanDocument(LoanDocument request)`
 
 Please refer to [Upload Forgiveness Document API](https://ussbaforgiveness.github.io/API-Dictionary.html#3-upload-forgiveness-documents)
 
-### Step 4: Delete PPP Loan Request ###
+### Step 4: Retrieve Loan Forgiveness Request Status and detail ###
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#4-delete-ppp-loan-request)
+This example is part of a sample [Use Case 3](https://ussbaforgiveness.github.io/UseCases/usecase3-Get-forgiveness-details.html)
 
-### This is a DELETE API Call to delete origination application created in Step 1. ###
+### This is a GET API Call to retrieve Sba PPP Loan Forgiveness details submitted in Step 1. ###
+`SbaLoanForgivenessService.getLoanStatus(Integer page)`
+_page_ is a query parameter ex: 1,2 etc
 		
-		`SbaLoanOriginationService.deletePPPLoanRequest(UUID slug) `
-		
+Response `SbaPPPLoanForgivenessStatusResponse` contains all the requests submitted as part of the Loan Forgiveness Process.
 
-### Step 5: Get ALL NAICS Codes ###
+Please refer to [Retrieve Forgiveness Request API](https://ussbaforgiveness.github.io/API-Dictionary.html#6-get-forgiveness-request-details-using-sba-number)
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#5-get-all-naics-codes)
+### Some more API Samples ###
 
-### This is to get details for all NAICS. ###
-		
-		`SbaLoanOriginationService.getNaicsCode(Integer page, String code,String description)`
+### Delete Forgiveness Request ###
+### This API is used for deleting the existing Forgiveness request ###
 
-### Step 6: Get NAICS details using NAICS code or Industry description ###
+This example is part of a sample [Use Case 2](https://ussbaforgiveness.github.io/UseCases/usecase2-Re-submission-of-forgiveness-request.html)
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#6-get-naics-details-using-naics-code-or-industry-description)
+```SbaLoanForgivenessService.deletePPPLoanRequest(UUID slug)```
 
-### This is to get details based on specific naics code or descirption. ###
-		
-		`SbaLoanOriginationService.getNaicsCode(Integer page, String code,String description)`
+Please refer to [Delete Forgiveness Request](https://ussbaforgiveness.github.io/API-Dictionary.html#7-delete-forgiveness-request)
 
-### Step 7: Get ALL Franchise Details ###
+### Get SBA Messages
+### During review of a Forgiveness request, SBA may require additional information from lender. This API is used to retrieve all messages sent by SBA to lender. ###
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#7-get-all-franchise-details)
+This example is part of a sample [Use Case 5](https://ussbaforgiveness.github.io/UseCases/usecase5-Correctional-Document-Upload.html)
 
-### This is to get details for all Francise ###
-		
-		`SbaLoanOriginationService.getFranchiseCode(Integer page, String code, String  description)`
+```SbaLoanForgivenessMessageService.getSbaLoanMessages(Integer page,String sbaNumber, boolean isComplete)```
 
-### Step 8: Get Franchise Details using Franchise code or name ###
+Response `SbaPPPLoanMessagesResponse` contains all the messages exchanged between SBA and the lender
+Please refer to [Get SBA Messages API](https://ussbaforgiveness.github.io/API-Dictionary.html#8-get-forgiveness-messages)
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#8-get-franchise-details-using-franchise-code-or-name)
+### Reply SBA Messages
+### During review of a Forgiveness request, SBA may require additional information from lender. This API is used by lender to respond back to SBA by attaching requested documents. ###
 
-### This is to get details for franchise based on franchise code or franchise description###
-		
-		`SbaLoanOriginationService.getFranchiseCode(Integer page, String code, String  description)`
+This example is part of a sample [Use Case 5](https://ussbaforgiveness.github.io/UseCases/usecase5-Correctional-Document-Upload.html)
 
-### Step 9: Get eTran PPP Loan Validation ###
+```SbaLoanForgivenessMessageService.updateSbaLoanMessageReply(MessageReply request)```
 
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#9-get-etran-ppp-loan-validation)
-
-### This API validates the First Draw eTran PPP Loan ###
-		
-		`SbaLoanOriginationService.getETranPPPLoanValidationResponse(Integer page, String sba_number)`
-
-### Step 10: Get Validated and Standardized Address ###
-
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#10-get-validated-and-standardized-address)
-
-### This API is used to validate and get standardized addresses along with Zip+4. ###
-		
-		`SbaLoanOriginationService.getValidateAndStandardizedAddressResponse(String address_1,String address_2,String city,String state,String zip_code)`
-
-### Step 11: Get EIDL Loan Validation ###
-
-This example is part of a sample (https://ussbappp.github.io/API-Dictionary.html#11-get-eidl-loan-validation)
-
-### This API validates EIDL Loan number ###
-		
-		`SbaLoanOriginationService.getEidlLoanValidationResponse(Integer page, String eidl_loan_number)`
-		
+Please refer to [Reply SBA Messages Rest API](https://ussbaforgiveness.github.io/API-Dictionary.html#11-reply-to-sba-message)
