@@ -103,4 +103,7 @@ public class LoanRequest {
 	private String lender_application_number;
 	private String sba_decision_date;
 	
+	private Boolean schedule_c_2483_form;
+	private String schedule_c_tax_year;
+	private BigDecimal schedule_c_gross_income;
 }
