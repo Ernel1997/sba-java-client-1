@@ -4,8 +4,8 @@ server:
     context-path: /sandbox
   
 sba:
-  api-token: f478e81a36ef6d63c5a0491966279f29eb7585e3
-  vendor-key: 953a53a4-88a2-44cb-8ba1-16ba4e51195e
+  api-token: {API_KEY}
+  vendor-key: {VENDOR_KEY}
   loan-forgiveness:
     url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_forgiveness_requests/
   loan-documents:
