@@ -1,0 +1,40 @@
+server:
+  port: ${application.port:9091}
+  servlet:
+    context-path: /sandbox
+  
+sba:
+  api-token: f478e81a36ef6d63c5a0491966279f29eb7585e3
+  vendor-key: 953a53a4-88a2-44cb-8ba1-16ba4e51195e
+  loan-forgiveness:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_forgiveness_requests/
+  loan-documents:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_documents/
+  loan-document-types:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_document_types/
+  loan-forgiveness-messages:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_forgiveness_messages/
+  loan-message-reply:
+    url: https://sandbox.forgiveness.sba.gov/api/ppp_loan_forgiveness_message_reply/
+  loan-origination:
+    url: https://sandbox.forgiveness.sba.gov/api/origination/
+  loan-direct-forgiveness:
+    url: https://sandbox.forgiveness.sba.gov/api/direct_forgiveness_submit/
+  loan-direct-forgiveness-status:
+    url: https://sandbox.forgiveness.sba.gov/api/direct_forgiveness_status/
+  loan-direct-forgiveness-eligibility:
+    url: https://sandbox.forgiveness.sba.gov/api/direct_forgiveness_eligibility/
+  loan-direct-forgiveness-request:
+    url: https://sandbox.forgiveness.sba.gov/api/direct_forgiveness_requests/
+  loan-direct-forgiveness-documents:
+    url: https://sandbox.forgiveness.sba.gov/api/direct_forgiveness_document/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - loggers
+  endpoint:
+    loggers:
+      enabled: true

@@ -1,0 +1,69 @@
+{
+  "etran_loan": {
+    "bank_notional_amount": 20483.00,
+    "sba_number": "2904438910",
+    "loan_number": "7777778",
+    "entity_name": "Abc Inc",
+    "ein": "04438910",
+    "funding_date": "2021-01-14",
+    "forgive_payroll": 1000,
+    "forgive_rent": 1000,
+    "forgive_utilities": 1000,
+    "forgive_mortgage": 1000,
+    "address1": "5050 Ritter Road – Suite B",
+    "address2": "Mechanicsburg, PA",
+    "dba_name": "Abc Inc",
+    "forgive_covered_operations_expenditures": 1000.00, 
+	"forgive_covered_property_damage_costs": 1000.00, 
+	"forgive_covered_supplier_costs": 1000.00, 
+	"forgive_covered_protection_expenditures": 1000.00, 
+    "naics_code": 541410,
+    "ppp_loan_draw" : 2,
+    "phone_number": "6102342123",
+    "forgive_fte_at_loan_application": 10,
+    "demographics": [
+      {
+        "name": "Jason",
+        "position": "self-employed individual",
+        "veteran_status": "1",
+        "gender": "M",
+        "ethnicity": "H",
+        "races": [
+          {
+            "race": "1"
+          }
+        ]
+      }
+    ],
+    "forgive_line_6_3508_or_line_5_3508ez": 7999,
+    "forgive_modified_total": 7999,
+    "forgive_payroll_cost_60_percent_requirement": 1666.66,
+    "forgive_amount": 1666.66,
+    "forgive_fte_at_forgiveness_application": 10,
+    "forgive_schedule_a_line_1": 100,
+    "forgive_schedule_a_line_2": 5,
+    "forgive_schedule_a_line_3_checkbox": false,
+    "forgive_schedule_a_line_3": 1,
+    "forgive_schedule_a_line_4": 100,
+    "forgive_schedule_a_line_5": 5,
+    "forgive_schedule_a_line_6": 100,
+    "forgive_schedule_a_line_7": 100,
+    "forgive_schedule_a_line_8": 100,
+    "forgive_schedule_a_line_9": 500,
+    "forgive_schedule_a_line_10": 1000,
+    "forgive_schedule_a_line_10_checkbox": false,
+    "forgive_schedule_a_line_11": 10,
+    "forgive_schedule_a_line_12": 10,
+    "forgive_schedule_a_line_13": 1,
+    "forgive_covered_period_from": "2021-01-14",
+    "forgive_covered_period_to": "2021-03-12",
+    "forgive_2_million": false,
+    "primary_email": "user@example.com",
+    "primary_name": "Jason",
+    "ez_form": false,
+    "no_reduction_in_employees": false,
+    "no_reduction_in_employees_and_covid_impact": false,
+    "forgive_lender_confirmation": true,
+    "forgive_lender_decision": 1
+  }
+}
